@@ -9,10 +9,9 @@ class Asosiy(View):
     def get(self,request):
         if request.user.is_authenticated:
             m=Reja.objects.all()
-            f=Rejaform()
+
             data = {"rejalar": Reja.objects.filter(foydalanuvchi=request.user),
                     "reja": m,
-                    "form": f,
                     }
             return render(request, "todo.html", data)
         return redirect("login")
